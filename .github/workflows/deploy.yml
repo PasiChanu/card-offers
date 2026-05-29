@@ -2,8 +2,8 @@ name: Daily Scrape & Deploy
 
 on:
   schedule:
-    - cron: '30 0 * * *'   # 00:30 UTC = 06:00 AM Sri Lanka time (UTC+5:30)
-  workflow_dispatch:         # Allow manual trigger from GitHub Actions tab
+    - cron: '30 0 * * *'   # 00:30 UTC = 06:00 AM Sri Lanka time
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -25,6 +25,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Show repo structure (debug)
+        run: |
+          echo "=== Repo root files ==="
+          ls -la
+          echo ""
+          echo "=== scraper/ files ==="
+          ls -la scraper/
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -33,47 +41,39 @@ jobs:
           cache-dependency-path: scraper/package.json
 
       - name: Install scraper dependencies
-        run: |
-          cd scraper
-          npm install
+        run: cd scraper && npm install
 
       - name: Install Puppeteer browser
-        run: |
-          cd scraper
-          npx puppeteer browsers install chrome
+        run: cd scraper && npx puppeteer browsers install chrome
 
       - name: Run scraper
-        run: |
-          cd scraper
-          node scrape.js
+        run: cd scraper && node scrape.js
         timeout-minutes: 20
-        continue-on-error: true   # If scraper fails, use existing data
+        continue-on-error: true
 
       - name: Check scraper output
-        id: check-offers
+        id: check
         run: |
           if [ -f scraper/offers.json ]; then
             COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('scraper/offers.json','utf8')).length)")
-            echo "offers_count=$COUNT" >> $GITHUB_OUTPUT
-            echo "✅ Scraped $COUNT offers"
+            echo "count=$COUNT" >> $GITHUB_OUTPUT
+            echo "Scraped $COUNT offers"
           else
-            echo "offers_count=0" >> $GITHUB_OUTPUT
-            echo "⚠️ No offers.json found, using existing index.html"
+            echo "count=0" >> $GITHUB_OUTPUT
+            echo "No offers.json found — will skip build and use existing index.html"
           fi
 
-      - name: Build index.html from scraped data
-        if: steps.check-offers.outputs.offers_count > 0
-        run: |
-          cd scraper
-          node build.js
+      - name: Build index.html
+        if: steps.check.outputs.count > 0
+        run: cd scraper && node build.js
 
-      - name: Commit updated index.html
-        if: steps.check-offers.outputs.offers_count > 0
+      - name: Commit updated files
+        if: steps.check.outputs.count > 0
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name  "github-actions[bot]"
           git add index.html scraper/offers.json
-          git diff --staged --quiet || git commit -m "🤖 Daily offers update — $(date +'%Y-%m-%d') (${{ steps.check-offers.outputs.offers_count }} offers)"
+          git diff --staged --quiet || git commit -m "bot: daily update $(date +'%Y-%m-%d') — ${{ steps.check.outputs.count }} offers"
           git push
 
       - name: Setup Pages
