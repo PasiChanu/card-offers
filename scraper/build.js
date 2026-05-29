@@ -1,35 +1,33 @@
-// build.js — reads offers.json and injects it into index.template.html
-const fs = require('fs');
+const fs   = require('fs');
 const path = require('path');
 
-// Resolve paths relative to repo root (one level up from scraper/)
-const repoRoot     = path.join(__dirname, '..');
-const offersPath   = path.join(__dirname, 'offers.json');
-const templatePath = path.join(repoRoot,  'index.template.html');
-const outputPath   = path.join(repoRoot,  'index.html');
+// __dirname = /home/runner/work/card-offers/card-offers/scraper
+// repoRoot  = /home/runner/work/card-offers/card-offers
+const repoRoot     = path.resolve(__dirname, '..');
+const offersPath   = path.resolve(__dirname, 'offers.json');
+const templatePath = path.resolve(repoRoot,  'index.template.html');
+const outputPath   = path.resolve(repoRoot,  'index.html');
 
-// Validate inputs
+console.log('Paths:');
+console.log('  repoRoot    :', repoRoot);
+console.log('  offersPath  :', offersPath);
+console.log('  templatePath:', templatePath);
+console.log('  outputPath  :', outputPath);
+
 if (!fs.existsSync(offersPath)) {
-  console.error('❌ offers.json not found. Run scrape.js first.');
+  console.error('ERROR: offers.json not found at', offersPath);
   process.exit(1);
 }
 if (!fs.existsSync(templatePath)) {
-  console.error(`❌ index.template.html not found at: ${templatePath}`);
-  console.error('   Make sure index.template.html is in the ROOT of your repo (not inside scraper/).');
+  console.error('ERROR: index.template.html not found at', templatePath);
+  console.error('Files in repoRoot:', fs.readdirSync(repoRoot).join(', '));
   process.exit(1);
 }
 
-// Load & sanitize offers
 let offers = JSON.parse(fs.readFileSync(offersPath, 'utf8'));
 
 function sanitize(str) {
-  return String(str || '')
-    .replace(/\\/g, '\\\\')
-    .replace(/`/g, "'")
-    .replace(/\${/g, '\\${')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .slice(0, 500);
+  return String(str || '').replace(/\\/g,'\\\\').replace(/`/g,"'").replace(/\${/g,'\\${').slice(0,500);
 }
 
 offers = offers.map((o, i) => ({
@@ -43,7 +41,6 @@ offers = offers.map((o, i) => ({
   url:    sanitize(o.url    || '')
 }));
 
-// Build SEED JS array
 const seedLines = offers.map(o =>
   `  {id:${o.id},bank:${JSON.stringify(o.bank)},cat:${JSON.stringify(o.cat)},` +
   `title:${JSON.stringify(o.title)},desc:${JSON.stringify(o.desc)},` +
@@ -51,24 +48,16 @@ const seedLines = offers.map(o =>
 );
 const seedJS = `const SEED=[\n${seedLines.join(',\n')}\n];`;
 
-// Read template and inject
 let html = fs.readFileSync(templatePath, 'utf8');
 
-// Replace SEED array
 if (!html.includes('const SEED=[')) {
-  console.error('❌ Could not find "const SEED=[" in index.template.html. Check your template file.');
+  console.error('ERROR: "const SEED=[" marker not found in template.');
   process.exit(1);
 }
+
 html = html.replace(/const SEED=\[[\s\S]*?\];/, seedJS);
+const now = new Date().toLocaleDateString('en-GB', { day:'numeric', month:'long', year:'numeric' });
+html = html.replace(/\{\{LAST_UPDATED\}\}/g, now);
 
-// Replace last-updated placeholder
-const now = new Date().toLocaleDateString('en-GB', {
-  day: 'numeric', month: 'long', year: 'numeric'
-});
-html = html.replace(/{{LAST_UPDATED}}/g, now);
-
-// Write output
 fs.writeFileSync(outputPath, html);
-console.log(`✅ Built index.html with ${offers.length} offers (Last updated: ${now})`);
-console.log(`   Template: ${templatePath}`);
-console.log(`   Output:   ${outputPath}`);
+console.log('Built index.html with', offers.length, 'offers. Updated:', now);
