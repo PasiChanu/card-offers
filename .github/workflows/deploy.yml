@@ -1,12 +1,12 @@
-name: Deploy to GitHub Pages
+name: Daily Scrape & Deploy
 
 on:
-  push:
-    branches:
-      - main
+  schedule:
+    - cron: '30 0 * * *'   # 00:30 UTC = 06:00 AM Sri Lanka time (UTC+5:30)
+  workflow_dispatch:         # Allow manual trigger from GitHub Actions tab
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -15,14 +15,66 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  scrape-and-deploy:
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: scraper/package.json
+
+      - name: Install scraper dependencies
+        run: |
+          cd scraper
+          npm install
+
+      - name: Install Puppeteer browser
+        run: |
+          cd scraper
+          npx puppeteer browsers install chrome
+
+      - name: Run scraper
+        run: |
+          cd scraper
+          node scrape.js
+        timeout-minutes: 20
+        continue-on-error: true   # If scraper fails, use existing data
+
+      - name: Check scraper output
+        id: check-offers
+        run: |
+          if [ -f scraper/offers.json ]; then
+            COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('scraper/offers.json','utf8')).length)")
+            echo "offers_count=$COUNT" >> $GITHUB_OUTPUT
+            echo "✅ Scraped $COUNT offers"
+          else
+            echo "offers_count=0" >> $GITHUB_OUTPUT
+            echo "⚠️ No offers.json found, using existing index.html"
+          fi
+
+      - name: Build index.html from scraped data
+        if: steps.check-offers.outputs.offers_count > 0
+        run: |
+          cd scraper
+          node build.js
+
+      - name: Commit updated index.html
+        if: steps.check-offers.outputs.offers_count > 0
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add index.html scraper/offers.json
+          git diff --staged --quiet || git commit -m "🤖 Daily offers update — $(date +'%Y-%m-%d') (${{ steps.check-offers.outputs.offers_count }} offers)"
+          git push
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
