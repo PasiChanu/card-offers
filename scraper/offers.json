@@ -1,0 +1,392 @@
+[
+  {
+    "id": 1,
+    "bank": "Seylan",
+    "cat": "Supermarket",
+    "title": "Discount Range",
+    "desc": "",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://calendar.google.com/calendar/u/0/r/eventedit?text=SPAR%20VISA%20INFINITE%20OFFER&dates=20230407T130000/20230407T150000&ctz=America/Los_Angeles&details=Description+of+the+event&location=Location+of+the+event&pli=1&uid=1679643653addeventcom&sf=true&output=xml"
+  },
+  {
+    "id": 2,
+    "bank": "Seylan",
+    "cat": "Shopping",
+    "title": "There are no promotions for this category at the moment",
+    "desc": "",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.seylan.lk/promotions/cards/style?type[]=credit_card&page=1"
+  },
+  {
+    "id": 3,
+    "bank": "ComBank",
+    "cat": "Other",
+    "title": "Looking for something more specific?",
+    "desc": "Close",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.combank.lk/rewards-promotions"
+  },
+  {
+    "id": 4,
+    "bank": "ComBank",
+    "cat": "Other",
+    "title": "Seasonal Offers",
+    "desc": "Filters",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.combank.lk/rewards-promotions"
+  },
+  {
+    "id": 5,
+    "bank": "ComBank",
+    "cat": "Dining",
+    "title": "Food & Restaurants",
+    "desc": "Up to",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.combank.lk/rewards-promotion/food-restaurants/enjoy-the-art-of-dining-at-courtyard-by-marriott-colombo-with-combank-credit-cardsflash-offer"
+  },
+  {
+    "id": 6,
+    "bank": "ComBank",
+    "cat": "Other",
+    "title": "Leisure",
+    "desc": "Up to",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.combank.lk/rewards-promotion/leisure/relax-at-hunas-falls-with-combank-credit-and-debit-cards"
+  },
+  {
+    "id": 7,
+    "bank": "ComBank",
+    "cat": "Shopping",
+    "title": "Online Shopping",
+    "desc": "Up to",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.combank.lk/rewards-promotion/online-shopping/great-online-deals-awaits-at-atlas-with-combank-credit-and-debit-cards"
+  },
+  {
+    "id": 8,
+    "bank": "ComBank",
+    "cat": "Supermarket",
+    "title": "Supermarket",
+    "desc": "Up to",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.combank.lk/rewards-promotion/supermarket/enjoy-10-cashback-at-keells-supermarket-with-combank-lankapay-jcb-cards"
+  },
+  {
+    "id": 9,
+    "bank": "ComBank",
+    "cat": "Shopping",
+    "title": "Fashion & Jewellery",
+    "desc": "Best Offer",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.combank.lk/rewards-promotion/fashion-jewellery/elegance-made-easy-with-combank-credit-cards"
+  },
+  {
+    "id": 10,
+    "bank": "ComBank",
+    "cat": "Health",
+    "title": "Healthcare",
+    "desc": "Up to",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.combank.lk/rewards-promotion/healthcare/embark-the-journey-of-holistic-healing-at-siddhalepa-clinic-with-combank-credit-and-debit-cards"
+  },
+  {
+    "id": 11,
+    "bank": "ComBank",
+    "cat": "Other",
+    "title": "Education",
+    "desc": "Best Offer",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.combank.lk/rewards-promotion/education/brighten-up-your-future-with-british-council-and-combank-credit-cards"
+  },
+  {
+    "id": 12,
+    "bank": "ComBank",
+    "cat": "Travel",
+    "title": "Travel",
+    "desc": "Best Offer",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.combank.lk/rewards-promotion/travel/travel-to-your-favourite-destination-with-sri-lankan-airlines-using-combank-credit-cards"
+  },
+  {
+    "id": 13,
+    "bank": "ComBank",
+    "cat": "Instalment",
+    "title": "Premium Card Offers",
+    "desc": "Best Offer",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.combank.lk/rewards-promotion/premium-card-offers/relax-at-your-favourite-holiday-destination-with-combank-premium-credit-cards"
+  },
+  {
+    "id": 14,
+    "bank": "ComBank",
+    "cat": "Other",
+    "title": "Other Offers",
+    "desc": "Best Offer",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.combank.lk/rewards-promotion/other-offers/enjoy-50-cashback-on-express-way-toll-payments-with-combank-unionpay-cards"
+  },
+  {
+    "id": 15,
+    "bank": "ComBank",
+    "cat": "Online",
+    "title": "Q+ Payment App Offers",
+    "desc": "Best Offer",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.combank.lk/rewards-promotion/q-payment-app-offers/recharge-hutch-15-worth-rs1199-via-q-payment-app-and-win-an-iphone-17-pro-10gb-free-data-from-hutch"
+  },
+  {
+    "id": 16,
+    "bank": "ComBank",
+    "cat": "Other",
+    "title": "Product Promotions",
+    "desc": "Best Offer",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.combank.lk/rewards-promotion/product-promotions/combank-debit-card-challenge-pay-more-win-more"
+  },
+  {
+    "id": 17,
+    "bank": "Pan Asia",
+    "cat": "Instalment",
+    "title": "0% installment plan for 12 or 24 months",
+    "desc": "08-04-2026",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.pabcbank.com/card-offers/"
+  },
+  {
+    "id": 18,
+    "bank": "Pan Asia",
+    "cat": "Other",
+    "title": "15% OFF",
+    "desc": "20-03-2026",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.pabcbank.com/card-offers/"
+  },
+  {
+    "id": 19,
+    "bank": "CDB",
+    "cat": "Other",
+    "title": "CDB Offers",
+    "desc": "",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cdb.lk/cdb-offers"
+  },
+  {
+    "id": 20,
+    "bank": "CDB",
+    "cat": "Online",
+    "title": "Exclusive Card Offers",
+    "desc": "Apply today to unlock savings and rewards.",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cdb.lk/cdb-offers/apply-now"
+  },
+  {
+    "id": 21,
+    "bank": "CDB",
+    "cat": "Dining",
+    "title": "Dining",
+    "desc": "",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cdb.lk/cdb-offers"
+  },
+  {
+    "id": 22,
+    "bank": "CDB",
+    "cat": "Shopping",
+    "title": "Fashion",
+    "desc": "Spend LKR 10,000 or more at amanté using a CDB Visa Debit Card for a chance to win a trip to the Maldives.",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cdb.lk/cdb-offers"
+  },
+  {
+    "id": 23,
+    "bank": "CDB",
+    "cat": "Travel",
+    "title": "Travel",
+    "desc": "",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cdb.lk/cdb-offers"
+  },
+  {
+    "id": 24,
+    "bank": "CDB",
+    "cat": "Supermarket",
+    "title": "Supermarkets",
+    "desc": "",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cdb.lk/cdb-offers"
+  },
+  {
+    "id": 25,
+    "bank": "CDB",
+    "cat": "Other",
+    "title": "Leisure",
+    "desc": "",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cdb.lk/cdb-offers"
+  },
+  {
+    "id": 26,
+    "bank": "CDB",
+    "cat": "Health",
+    "title": "Enjoy up to 50% OFF on world-class medical services in Thailand, Singapore & Malaysia with your CDB Debit Card",
+    "desc": "T&C Apply",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://drive.google.com/file/d/1ss6OlnKBwxeTCmF-LEY2gIQlBgD2QUNm/view?usp=sharing"
+  },
+  {
+    "id": 27,
+    "bank": "CDB",
+    "cat": "Other",
+    "title": "Enjoy 25% OFF with CDB Credit & Debit Cards at Austasia Sports & Leisure Club, plus 15% OFF on Memberships with CDB Credit Cards.",
+    "desc": "Terms & Conditions",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"
+  },
+  {
+    "id": 28,
+    "bank": "CDB",
+    "cat": "Other",
+    "title": "Enjoy 15% OFF at Petti Petti Mirissa with your CDB Credit Card.",
+    "desc": "Terms & Conditions",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"
+  },
+  {
+    "id": 29,
+    "bank": "CDB",
+    "cat": "Other",
+    "title": "Enjoy 25% OFF at Banana Bunks – Mirissa with your CDB Credit Card.",
+    "desc": "Terms & Conditions",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"
+  },
+  {
+    "id": 30,
+    "bank": "CDB",
+    "cat": "Other",
+    "title": "Enjoy 25% OFF at Banana Bunks – Kandy with your CDB Credit Card.",
+    "desc": "Terms & Conditions",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"
+  },
+  {
+    "id": 31,
+    "bank": "CDB",
+    "cat": "Other",
+    "title": "Enjoy 25% OFF at Kent Cottage – Nuwaraeliya with your CDB Credit Card.",
+    "desc": "Terms & Conditions",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"
+  },
+  {
+    "id": 32,
+    "bank": "CDB",
+    "cat": "Other",
+    "title": "Spend a minimum of LKR 10,000 at amanté and stand a chance to win a trip to the Maldives",
+    "desc": "Spend LKR 10,000 or more at amanté using a CDB Visa Debit Card for a chance to win a trip to the Maldives.",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"
+  },
+  {
+    "id": 33,
+    "bank": "CDB",
+    "cat": "Fuel",
+    "title": "Tap your CDB Mastercard Credit Card at the toll gate and win a RS 100,000 voucher weekly!",
+    "desc": "Company Registration No: PB232PQ BBB (Ika), Outlook Stable – Fitch Ratings Lanka Ltd. Date of Incorporation: 07th September 1995. Licensed by the Central Bank of Sri Lanka, under the Finance Business Act No. 42 of 2011.",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"
+  },
+  {
+    "id": 34,
+    "bank": "CDB",
+    "cat": "Other",
+    "title": "Book a suite with B&B and enjoy high tea for two when you pay with CDB Mastercard Credit Card",
+    "desc": "Terms & Conditions",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"
+  },
+  {
+    "id": 35,
+    "bank": "CDB",
+    "cat": "Instalment",
+    "title": "Enjoy 20% OFF on CDB Credit Cards & 10% OFF on CDB Debit Cards at Cool Planet",
+    "desc": "Terms & Conditions",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"
+  },
+  {
+    "id": 36,
+    "bank": "CDB",
+    "cat": "Instalment",
+    "title": "Top Up your Playdium Card with CDB Credit Cards and Enjoy 20% Savings.",
+    "desc": "",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"
+  },
+  {
+    "id": 37,
+    "bank": "CDB",
+    "cat": "Supermarket",
+    "title": "Enjoy 10% OFF at Keells with CDB Credit/Debit Cards",
+    "desc": "Terms and Conditions",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"
+  },
+  {
+    "id": 38,
+    "bank": "CDB",
+    "cat": "Instalment",
+    "title": "Enjoy 30% off with CDB Credit Cards at Cinnamon Lakeside",
+    "desc": "Terms & Conditions",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"
+  },
+  {
+    "id": 39,
+    "bank": "CDB",
+    "cat": "Travel",
+    "title": "Enjoy Up to 50% OFF on Luxury Stays at Anantaya Resorts & Spa – Chilaw & Pasikudah",
+    "desc": "Discount Structure - Anantaya Resorts & Spa - Chilaw",
+    "disc": "Special offer",
+    "expiry": "2026-07-31",
+    "url": "https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"
+  }
+]

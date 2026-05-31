@@ -138,7 +138,7 @@ main{max-width:1200px;margin:0 auto;padding:22px 24px 80px}
   <div class="hinner">
     <a href="#" class="logo"><i class="ti ti-credit-card"></i> Sri Lanka Card Offers</a>
     <div class="hright">
-      <div class="date-badge" id="date-disp"></div>
+      <div class="date-badge" id="date-disp"></div><div class="date-badge" style="background:#E3F5EE;color:#1A7A5E" title="Offers last refreshed from bank websites">🔄 Updated: 31 May 2026</div>
       <button class="btn-hdr" onclick="openCardModal()"><i class="ti ti-wallet"></i> My Cards</button>
       <button class="btn-hdr g" onclick="openOfferModal()"><i class="ti ti-plus"></i> Add offer</button>
     </div>
@@ -327,84 +327,48 @@ const DEFAULT_MY_CARDS=[
 ];
 
 const SEED=[
-  // NDB
-  {id:1, bank:'NDB',cat:'Dining',title:'CHEERS – Cinnamon Grand',desc:'25% savings on food. Signature, Infinite & Privilege Banking cards.',disc:'25% off',expiry:'2026-05-31',url:'https://www.ndbbank.com/cards/card-offers/offer-details/411'},
-  {id:2, bank:'NDB',cat:'Dining',title:'AYU – NH Collection Colombo',desc:'20% savings on Lunch & Dinner Buffet for Signature & Infinite cards.',disc:'20% off',expiry:'2026-05-31',url:'https://www.ndbbank.com/cards/card-offers/offer-details/411'},
-  {id:3, bank:'NDB',cat:'Supermarket',title:'Cargills Food City – Tuesdays',desc:'25% savings on Fresh Vegetables, Fruits & Seafood every Tuesday in May 2026.',disc:'25% off',expiry:'2026-05-26',url:'https://www.ndbbank.com/cards/card-offers/offer-details/29'},
-  {id:4, bank:'NDB',cat:'Supermarket',title:'Keells Supermarket – Thursdays',desc:'25% savings on Fresh Vegetables, Fruits, Seafood & Meat for bills above Rs. 5,000.',disc:'25% off',expiry:'2026-05-31',url:'https://www.ndbbank.com/cards/card-offers/offer-details/29'},
-  {id:5, bank:'NDB',cat:'Supermarket',title:'Softlogic Glomark – 27th May',desc:'30% savings on Fresh Vegetables, Fruit, Fish & Meat.',disc:'30% off',expiry:'2026-05-27',url:'https://www.ndbbank.com/cards/card-offers/offer-details/106'},
-  {id:6, bank:'NDB',cat:'Travel',title:'findmyfare.com – Any Airline',desc:'Flat 15% savings on any destination (base fare). Up to 20% on Turkish Airlines with 0% instalment up to 36 months.',disc:'15–20% off',expiry:'2026-05-31',url:'https://www.ndbbank.com/cards/card-offers/offer-details/239'},
-  {id:7, bank:'NDB',cat:'Travel',title:'Uga Bay – Passikudah',desc:'45% savings on reservations. Signature, Infinite & Privilege Banking cards.',disc:'45% off',expiry:'2026-06-30',url:'https://www.ndbbank.com/cards/card-offers/offer-details/75'},
-  {id:8, bank:'NDB',cat:'Travel',title:'Anantaya Resorts & Spa – Chilaw',desc:'Up to 50% savings on reservation.',disc:'Up to 50% off',expiry:'2026-05-31',url:'https://www.ndbbank.com/cards/card-offers/offer-details/75'},
-  {id:9, bank:'NDB',cat:'Fuel',title:'Zero fuel surcharge',desc:'0% fuel surcharge for Signature & Infinite credit cardholders island-wide.',disc:'0% surcharge',expiry:'2026-05-31',url:'https://www.ndbbank.com/cards/card-offers/offer-details/76'},
-  {id:10,bank:'NDB',cat:'Instalment',title:'Education – 0% instalment up to 36M',desc:'0% instalment plans on any educational payments. Platinum, Signature & Infinite cards.',disc:'0% for 36M',expiry:'2026-05-31',url:'https://www.ndbbank.com/cards/card-offers/offer-details/25'},
-  {id:11,bank:'NDB',cat:'Health',title:'Hospital & Insurance – 0% 12M',desc:'Up to 12 months 0% instalment plans on Hospital, Insurance & Auto Mobile services.',disc:'0% for 12M',expiry:'2026-05-31',url:'https://www.ndbbank.com/cards/card-offers/offer-details/25'},
-  // ComBank
-  {id:12,bank:'ComBank',cat:'Travel',title:'Easy Vacation – hotel discounts',desc:'Discounts up to 65% at 70+ partner hotels island-wide including Uga Bay, Laya, Anantaya and more.',disc:'Up to 65% off',expiry:'2026-06-30',url:'https://www.combank.lk/rewards-promotions'},
-  {id:13,bank:'ComBank',cat:'Instalment',title:'0% easy payment plans',desc:'Convert purchases at partner merchants to 0% interest instalments. Platinum card eligible.',disc:'0% interest',expiry:'2026-12-31',url:'https://www.combank.lk/rewards-promotions'},
-  {id:14,bank:'ComBank',cat:'Rewards',title:'Max Loyalty Rewards redemption',desc:'Redeem ComBank Max Loyalty Rewards points for hotel bookings, online shopping, flight bookings and more.',disc:'Rewards',expiry:'2026-12-31',url:'https://maxrewards.combank.net'},
-  // Seylan
-  {id:15,bank:'Seylan',cat:'Shopping',title:'Flat 25% off sitewide',desc:'25% off at participating retailers with your Seylan Visa Platinum & World Mastercard.',disc:'25% off',expiry:'2026-05-25',url:'https://www.seylan.lk/promotions/cards?type[]=credit_card'},
-  {id:16,bank:'Seylan',cat:'Travel',title:'Up to 30% off room rates',desc:'Savings on room rates at selected partner hotels with Seylan Platinum & World Mastercard.',disc:'Up to 30% off',expiry:'2026-06-30',url:'https://www.seylan.lk/promotions/cards?type[]=credit_card'},
-  {id:17,bank:'Seylan',cat:'Health',title:'25% off health checks + 0% EPP 12M',desc:'25% off health check packages with easy payment plans up to 12 months. Platinum & World MC eligible.',disc:'25% off',expiry:'2026-06-30',url:'https://www.seylan.lk/promotions/cards?type[]=credit_card'},
-  {id:18,bank:'Seylan',cat:'Instalment',title:'0% instalment up to 36M',desc:'0% instalment plans up to 36 months at selected merchants. Platinum & World Mastercard eligible.',disc:'0% for 36M',expiry:'2026-07-31',url:'https://www.seylan.lk/promotions/cards?type[]=credit_card'},
-  {id:19,bank:'Seylan',cat:'Health',title:'Le Lily Signature Spa',desc:'Special discounts on Executive Reset Collection for Seylan Platinum & World Mastercard.',disc:'Special rate',expiry:'2026-06-30',url:'https://www.seylan.lk/promotions/cards?type[]=credit_card'},
-  // NTB
-  {id:20,bank:'NTB',cat:'Dining',title:'Butlers Restaurant',desc:'20% savings with NTB World Mastercard. Valid for dine-in on à la carte menu.',disc:'20% off',expiry:'2026-06-30',url:'https://www.nationstrust.com/promotions/dining'},
-  {id:21,bank:'NTB',cat:'Dining',title:'Waters Edge (Boardwalk / Diyatha / KOBE)',desc:'20% savings on food with NTB Mastercard. Max savings LKR 10,000 per transaction.',disc:'20% off',expiry:'2026-05-31',url:'https://www.nationstrust.com/promotions/dining'},
-  {id:22,bank:'NTB',cat:'Dining',title:'Pizza Hut – Buy 1 Get 1 Large Pizza',desc:'Buy one Large Pizza, get one Large Delight free. Valid 28th May 2026 only. Dine-in, takeaway & delivery.',disc:'Buy 1 Get 1',expiry:'2026-05-28',url:'https://www.nationstrust.com/promotions/dining'},
-  {id:23,bank:'NTB',cat:'Dining',title:'Great Wall Restaurant',desc:'20% savings with NTB World Mastercard. Valid on bills above LKR 3,000.',disc:'20% off',expiry:'2026-06-30',url:'https://www.nationstrust.com/promotions/dining'},
-  {id:24,bank:'NTB',cat:'Dining',title:'Red Orchids Restaurant',desc:'15% savings with NTB Mastercard. Dine-in only, bills above LKR 5,000.',disc:'15% off',expiry:'2026-05-31',url:'https://www.nationstrust.com/promotions/dining'},
-  {id:25,bank:'NTB',cat:'Dining',title:'Arabian Knights',desc:'15% savings with NTB Mastercard. Valid for dine-in and takeaway.',disc:'15% off',expiry:'2026-05-30',url:'https://www.nationstrust.com/promotions/dining'},
-  {id:26,bank:'NTB',cat:'Travel',title:'Exclusive hotel savings',desc:'Enjoy exclusive savings on next hotel stay with NTB World Mastercard.',disc:'Special rates',expiry:'2026-06-30',url:'https://www.nationstrust.com/promotions/hotels-resorts'},
-  {id:27,bank:'NTB',cat:'Online',title:'Online shopping deals',desc:'Exclusive savings when shopping online with NTB World Mastercard.',disc:'Savings',expiry:'2026-06-30',url:'https://www.nationstrust.com/promotions/online'},
-  {id:28,bank:'NTB',cat:'Instalment',title:'0% instalment at partner merchants',desc:'0% instalment plans at a range of merchant partners island-wide with World Mastercard.',disc:'0% interest',expiry:'2026-08-31',url:'https://www.nationstrust.com/promotions/other'},
-  // BOC
-  {id:29,bank:'BOC',cat:'Dining',title:'Dining discounts at partner restaurants',desc:'BOC Visa Platinum & World Mastercard holders enjoy exclusive dining discounts at partner outlets island-wide.',disc:'Up to 20% off',expiry:'2026-06-30',url:'https://www.boc.lk/personal-banking/card-offers'},
-  {id:30,bank:'BOC',cat:'Travel',title:'Hotel & resort discounts',desc:'Exclusive room rate savings at selected partner hotels for BOC Platinum & World Mastercard.',disc:'Up to 30% off',expiry:'2026-06-30',url:'https://www.boc.lk/personal-banking/card-offers'},
-  {id:31,bank:'BOC',cat:'Supermarket',title:'Keells supermarket savings',desc:'Special savings at Keells Supermarkets for BOC credit cardholders on selected days.',disc:'Discounts',expiry:'2026-05-31',url:'https://www.boc.lk/personal-banking/card-offers'},
-  {id:32,bank:'BOC',cat:'Instalment',title:'0% instalment plans',desc:'0% interest instalment plans at selected partner merchants for BOC credit cardholders.',disc:'0% interest',expiry:'2026-12-31',url:'https://www.boc.lk/personal-banking/card-offers'},
-  {id:33,bank:'BOC',cat:'Fuel',title:'Fuel surcharge waiver',desc:'Fuel surcharge waiver for BOC Platinum credit cardholders at CPC fuel stations.',disc:'Surcharge free',expiry:'2026-12-31',url:'https://www.boc.lk/personal-banking/card-offers'},
-  // People's Bank
-  {id:34,bank:"People's",cat:'Dining',title:'Dining privileges island-wide',desc:"People's Bank Visa Platinum & Mastercard World holders get dining discounts at selected restaurants.",disc:'Up to 20% off',expiry:'2026-06-30',url:'https://www.peoplesbank.lk/special-offers/'},
-  {id:35,bank:"People's",cat:'Travel',title:'Hotel booking discounts',desc:"Exclusive hotel rates for People's Bank Visa Platinum & Mastercard World cardholders.",disc:'Up to 30% off',expiry:'2026-06-30',url:'https://www.peoplesbank.lk/special-offers/'},
-  {id:36,bank:"People's",cat:'Instalment',title:'0% easy payment plans',desc:"0% interest instalment plans at selected merchants for People's Bank credit cardholders.",disc:'0% interest',expiry:'2026-12-31',url:'https://www.peoplesbank.lk/special-offers/'},
-  {id:37,bank:"People's",cat:'Shopping',title:'Seasonal shopping deals',desc:"Exclusive discounts at partner retailers for People's Bank Visa Platinum & World Mastercard.",disc:'Discounts',expiry:'2026-06-30',url:'https://www.peoplesbank.lk/special-offers/'},
-  // HNB
-  {id:38,bank:'HNB',cat:'Dining',title:'Restaurant dining discounts',desc:'HNB Visa Platinum & Signature cardholders enjoy discounts at partner dining outlets island-wide.',disc:'Up to 20% off',expiry:'2026-06-30',url:'https://www.hnb.lk/card-promotion'},
-  {id:39,bank:'HNB',cat:'Travel',title:'Hotel & travel deals',desc:'Exclusive hotel rates and travel deals for HNB Visa Platinum, Signature & Infinite cardholders.',disc:'Up to 40% off',expiry:'2026-06-30',url:'https://www.hnb.lk/card-promotion'},
-  {id:40,bank:'HNB',cat:'Shopping',title:'Retail shopping offers',desc:'Special discounts at partner retail stores for HNB Visa Platinum and above cardholders.',disc:'Discounts',expiry:'2026-06-30',url:'https://www.hnb.lk/card-promotion'},
-  {id:41,bank:'HNB',cat:'Instalment',title:'0% instalment plans up to 24M',desc:'0% interest instalment plans up to 24 months at selected merchants. Platinum & above eligible.',disc:'0% for 24M',expiry:'2026-12-31',url:'https://www.hnb.lk/card-promotion'},
-  // DFCC
-  {id:42,bank:'DFCC',cat:'Dining',title:'Dining lifestyle privileges',desc:'DFCC Visa Platinum, Signature & Infinite cardholders enjoy exclusive dining discounts at partner restaurants.',disc:'Up to 25% off',expiry:'2026-06-30',url:'https://www.dfcc.lk/cards/credit-card-offers'},
-  {id:43,bank:'DFCC',cat:'Travel',title:'Hotel & lifestyle offers',desc:'Exclusive hotel rates and lifestyle benefits for DFCC Visa Infinite & Signature cardholders.',disc:'Up to 50% off',expiry:'2026-06-30',url:'https://www.dfcc.lk/cards/credit-card-offers'},
-  {id:44,bank:'DFCC',cat:'Fuel',title:'Lanka IOC fuel savings',desc:'Special fuel savings for Lanka IOC Co-Branded Mastercard holders at IOC fuel stations.',disc:'Special rate',expiry:'2026-12-31',url:'https://www.dfcc.lk/cards/credit-card-offers'},
-  {id:45,bank:'DFCC',cat:'Instalment',title:'0% instalment up to 36M',desc:'0% instalment plans up to 36 months at partner merchants for DFCC Visa Platinum and above.',disc:'0% for 36M',expiry:'2026-12-31',url:'https://www.dfcc.lk/cards/credit-card-offers'},
-  // Sampath
-  {id:46,bank:'Sampath',cat:'Travel',title:'UltraMiles – airline miles card',desc:'Earn miles on every spend with Sampath UltraMiles Visa card. Redeem for flights, upgrades and more.',disc:'Miles rewards',expiry:'2026-12-31',url:'https://www.sampath.lk/sampath-cards/credit-card-offer'},
-  {id:47,bank:'Sampath',cat:'Dining',title:'Dining discounts at partner outlets',desc:'Sampath Visa Platinum & Amex Everyday cardholders get dining savings at partner restaurants.',disc:'Up to 20% off',expiry:'2026-06-30',url:'https://www.sampath.lk/sampath-cards/credit-card-offer'},
-  {id:48,bank:'Sampath',cat:'Travel',title:'Hotel special rates',desc:'Exclusive hotel savings for Sampath Visa Platinum & UltraMiles cardholders.',disc:'Up to 40% off',expiry:'2026-06-30',url:'https://www.sampath.lk/sampath-cards/credit-card-offer'},
-  {id:49,bank:'Sampath',cat:'Instalment',title:'0% instalment plans up to 36M',desc:'0% interest instalment plans at selected merchants for Sampath Visa Platinum and above.',disc:'0% for 36M',expiry:'2026-12-31',url:'https://www.sampath.lk/sampath-cards/credit-card-offer'},
-  // Pan Asia
-  {id:50,bank:'Pan Asia',cat:'Shopping',title:'Retail shopping discounts',desc:'Pan Asia World Mastercard & Black Mastercard holders enjoy discounts at partner retail stores.',disc:'Up to 15% off',expiry:'2026-06-30',url:'https://www.pabcbank.com/card-offers/'},
-  {id:51,bank:'Pan Asia',cat:'Dining',title:'Dining offers',desc:'Pan Asia World Mastercard cardholders enjoy special dining discounts at partner restaurants.',disc:'Up to 15% off',expiry:'2026-06-30',url:'https://www.pabcbank.com/card-offers/'},
-  {id:52,bank:'Pan Asia',cat:'Instalment',title:'0% instalment plans',desc:'0% interest instalment plans at partner merchants for Pan Asia World & Black Mastercard.',disc:'0% interest',expiry:'2026-12-31',url:'https://www.pabcbank.com/card-offers/'},
-  // Cargills
-  {id:53,bank:'Cargills',cat:'Supermarket',title:'Cargills Food City – exclusive savings',desc:'Cargills Bank Platinum & Ascend cardholders enjoy exclusive savings at Cargills Food City outlets.',disc:'Up to 10% off',expiry:'2026-06-30',url:'https://www.cargillsbank.com/promotions'},
-  {id:54,bank:'Cargills',cat:'Shopping',title:'Retail & lifestyle deals',desc:'Cargills Bank credit cardholders enjoy special rates at partner retail and lifestyle merchants.',disc:'Discounts',expiry:'2026-06-30',url:'https://www.cargillsbank.com/promotions'},
-  {id:55,bank:'Cargills',cat:'Instalment',title:'0% instalment plans',desc:'0% interest instalment plans at selected merchants for Cargills Bank Platinum & Ascend cards.',disc:'0% interest',expiry:'2026-12-31',url:'https://www.cargillsbank.com/promotions'},
-  // CDB
-  {id:56,bank:'CDB',cat:'Shopping',title:'Shopping & lifestyle offers',desc:'CDB Platinum & World credit cardholders enjoy discounts at partner retail and lifestyle outlets.',disc:'Up to 20% off',expiry:'2026-06-30',url:'https://www.cdb.lk/cdb-offers'},
-  {id:57,bank:'CDB',cat:'Dining',title:'Dining discounts',desc:'CDB Platinum & World cardholders get dining privileges at partner restaurants.',disc:'Up to 15% off',expiry:'2026-06-30',url:'https://www.cdb.lk/cdb-offers'},
-  {id:58,bank:'CDB',cat:'Instalment',title:'0% instalment plans',desc:'0% interest instalment plans at selected merchants for CDB Titanium, Platinum & World cards.',disc:'0% interest',expiry:'2026-12-31',url:'https://www.cdb.lk/cdb-offers'},
-  // Standard Chartered
-  {id:59,bank:'Standard Chartered',cat:'Travel',title:'SriLankan Airlines – miles & upgrades',desc:'Earn FlySmiLes miles on every spend with SC SriLankan Airlines Platinum Card. Redeem for flights and upgrades.',disc:'Miles rewards',expiry:'2026-12-31',url:'https://www.sc.com/lk/promotions/'},
-  {id:60,bank:'Standard Chartered',cat:'Rewards',title:'360 Rewards Programme',desc:'Earn 360° Reward Points on every spend with SC Journey & Rewards cards. Redeem for vouchers, flights and more.',disc:'Points rewards',expiry:'2026-12-31',url:'https://www.sc.com/lk/promotions/360-rewards/'},
-  {id:61,bank:'Standard Chartered',cat:'Travel',title:'The Good Life Privileges',desc:'Exclusive travel and lifestyle privileges for SC Visa Infinite & Priority Banking cardholders.',disc:'Exclusive perks',expiry:'2026-12-31',url:'https://www.sc.com/lk/promotions/the-good-life-privileges/'},
-  {id:62,bank:'Standard Chartered',cat:'Instalment',title:'Easy Settlement Plan',desc:'Convert purchases to low-rate instalment plans with SC Easy Settlement Plan for all credit cards.',disc:'Low rate EPP',expiry:'2026-12-31',url:'https://www.sc.com/lk/credit-cards/installment-plan/'},
+  {id:1,bank:"Seylan",cat:"Supermarket",title:"Discount Range",desc:"",disc:"Special offer",expiry:"2026-07-31",url:"https://calendar.google.com/calendar/u/0/r/eventedit?text=SPAR%20VISA%20INFINITE%20OFFER&dates=20230407T130000/20230407T150000&ctz=America/Los_Angeles&details=Description+of+the+event&location=Location+of+the+event&pli=1&uid=1679643653addeventcom&sf=true&output=xml"},
+  {id:2,bank:"Seylan",cat:"Shopping",title:"There are no promotions for this category at the moment",desc:"",disc:"Special offer",expiry:"2026-07-31",url:"https://www.seylan.lk/promotions/cards/style?type[]=credit_card&page=1"},
+  {id:3,bank:"ComBank",cat:"Other",title:"Looking for something more specific?",desc:"Close",disc:"Special offer",expiry:"2026-07-31",url:"https://www.combank.lk/rewards-promotions"},
+  {id:4,bank:"ComBank",cat:"Other",title:"Seasonal Offers",desc:"Filters",disc:"Special offer",expiry:"2026-07-31",url:"https://www.combank.lk/rewards-promotions"},
+  {id:5,bank:"ComBank",cat:"Dining",title:"Food & Restaurants",desc:"Up to",disc:"Special offer",expiry:"2026-07-31",url:"https://www.combank.lk/rewards-promotion/food-restaurants/enjoy-the-art-of-dining-at-courtyard-by-marriott-colombo-with-combank-credit-cardsflash-offer"},
+  {id:6,bank:"ComBank",cat:"Other",title:"Leisure",desc:"Up to",disc:"Special offer",expiry:"2026-07-31",url:"https://www.combank.lk/rewards-promotion/leisure/relax-at-hunas-falls-with-combank-credit-and-debit-cards"},
+  {id:7,bank:"ComBank",cat:"Shopping",title:"Online Shopping",desc:"Up to",disc:"Special offer",expiry:"2026-07-31",url:"https://www.combank.lk/rewards-promotion/online-shopping/great-online-deals-awaits-at-atlas-with-combank-credit-and-debit-cards"},
+  {id:8,bank:"ComBank",cat:"Supermarket",title:"Supermarket",desc:"Up to",disc:"Special offer",expiry:"2026-07-31",url:"https://www.combank.lk/rewards-promotion/supermarket/enjoy-10-cashback-at-keells-supermarket-with-combank-lankapay-jcb-cards"},
+  {id:9,bank:"ComBank",cat:"Shopping",title:"Fashion & Jewellery",desc:"Best Offer",disc:"Special offer",expiry:"2026-07-31",url:"https://www.combank.lk/rewards-promotion/fashion-jewellery/elegance-made-easy-with-combank-credit-cards"},
+  {id:10,bank:"ComBank",cat:"Health",title:"Healthcare",desc:"Up to",disc:"Special offer",expiry:"2026-07-31",url:"https://www.combank.lk/rewards-promotion/healthcare/embark-the-journey-of-holistic-healing-at-siddhalepa-clinic-with-combank-credit-and-debit-cards"},
+  {id:11,bank:"ComBank",cat:"Other",title:"Education",desc:"Best Offer",disc:"Special offer",expiry:"2026-07-31",url:"https://www.combank.lk/rewards-promotion/education/brighten-up-your-future-with-british-council-and-combank-credit-cards"},
+  {id:12,bank:"ComBank",cat:"Travel",title:"Travel",desc:"Best Offer",disc:"Special offer",expiry:"2026-07-31",url:"https://www.combank.lk/rewards-promotion/travel/travel-to-your-favourite-destination-with-sri-lankan-airlines-using-combank-credit-cards"},
+  {id:13,bank:"ComBank",cat:"Instalment",title:"Premium Card Offers",desc:"Best Offer",disc:"Special offer",expiry:"2026-07-31",url:"https://www.combank.lk/rewards-promotion/premium-card-offers/relax-at-your-favourite-holiday-destination-with-combank-premium-credit-cards"},
+  {id:14,bank:"ComBank",cat:"Other",title:"Other Offers",desc:"Best Offer",disc:"Special offer",expiry:"2026-07-31",url:"https://www.combank.lk/rewards-promotion/other-offers/enjoy-50-cashback-on-express-way-toll-payments-with-combank-unionpay-cards"},
+  {id:15,bank:"ComBank",cat:"Online",title:"Q+ Payment App Offers",desc:"Best Offer",disc:"Special offer",expiry:"2026-07-31",url:"https://www.combank.lk/rewards-promotion/q-payment-app-offers/recharge-hutch-15-worth-rs1199-via-q-payment-app-and-win-an-iphone-17-pro-10gb-free-data-from-hutch"},
+  {id:16,bank:"ComBank",cat:"Other",title:"Product Promotions",desc:"Best Offer",disc:"Special offer",expiry:"2026-07-31",url:"https://www.combank.lk/rewards-promotion/product-promotions/combank-debit-card-challenge-pay-more-win-more"},
+  {id:17,bank:"Pan Asia",cat:"Instalment",title:"0% installment plan for 12 or 24 months",desc:"08-04-2026",disc:"Special offer",expiry:"2026-07-31",url:"https://www.pabcbank.com/card-offers/"},
+  {id:18,bank:"Pan Asia",cat:"Other",title:"15% OFF",desc:"20-03-2026",disc:"Special offer",expiry:"2026-07-31",url:"https://www.pabcbank.com/card-offers/"},
+  {id:19,bank:"CDB",cat:"Other",title:"CDB Offers",desc:"",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cdb.lk/cdb-offers"},
+  {id:20,bank:"CDB",cat:"Online",title:"Exclusive Card Offers",desc:"Apply today to unlock savings and rewards.",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cdb.lk/cdb-offers/apply-now"},
+  {id:21,bank:"CDB",cat:"Dining",title:"Dining",desc:"",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cdb.lk/cdb-offers"},
+  {id:22,bank:"CDB",cat:"Shopping",title:"Fashion",desc:"Spend LKR 10,000 or more at amanté using a CDB Visa Debit Card for a chance to win a trip to the Maldives.",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cdb.lk/cdb-offers"},
+  {id:23,bank:"CDB",cat:"Travel",title:"Travel",desc:"",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cdb.lk/cdb-offers"},
+  {id:24,bank:"CDB",cat:"Supermarket",title:"Supermarkets",desc:"",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cdb.lk/cdb-offers"},
+  {id:25,bank:"CDB",cat:"Other",title:"Leisure",desc:"",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cdb.lk/cdb-offers"},
+  {id:26,bank:"CDB",cat:"Health",title:"Enjoy up to 50% OFF on world-class medical services in Thailand, Singapore & Malaysia with your CDB Debit Card",desc:"T&C Apply",disc:"Special offer",expiry:"2026-07-31",url:"https://drive.google.com/file/d/1ss6OlnKBwxeTCmF-LEY2gIQlBgD2QUNm/view?usp=sharing"},
+  {id:27,bank:"CDB",cat:"Other",title:"Enjoy 25% OFF with CDB Credit & Debit Cards at Austasia Sports & Leisure Club, plus 15% OFF on Memberships with CDB Credit Cards.",desc:"Terms & Conditions",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"},
+  {id:28,bank:"CDB",cat:"Other",title:"Enjoy 15% OFF at Petti Petti Mirissa with your CDB Credit Card.",desc:"Terms & Conditions",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"},
+  {id:29,bank:"CDB",cat:"Other",title:"Enjoy 25% OFF at Banana Bunks – Mirissa with your CDB Credit Card.",desc:"Terms & Conditions",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"},
+  {id:30,bank:"CDB",cat:"Other",title:"Enjoy 25% OFF at Banana Bunks – Kandy with your CDB Credit Card.",desc:"Terms & Conditions",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"},
+  {id:31,bank:"CDB",cat:"Other",title:"Enjoy 25% OFF at Kent Cottage – Nuwaraeliya with your CDB Credit Card.",desc:"Terms & Conditions",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"},
+  {id:32,bank:"CDB",cat:"Other",title:"Spend a minimum of LKR 10,000 at amanté and stand a chance to win a trip to the Maldives",desc:"Spend LKR 10,000 or more at amanté using a CDB Visa Debit Card for a chance to win a trip to the Maldives.",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"},
+  {id:33,bank:"CDB",cat:"Fuel",title:"Tap your CDB Mastercard Credit Card at the toll gate and win a RS 100,000 voucher weekly!",desc:"Company Registration No: PB232PQ BBB (Ika), Outlook Stable – Fitch Ratings Lanka Ltd. Date of Incorporation: 07th September 1995. Licensed by the Central Bank of Sri Lanka, under the Finance Business Act No. 42 of 2011.",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"},
+  {id:34,bank:"CDB",cat:"Other",title:"Book a suite with B&B and enjoy high tea for two when you pay with CDB Mastercard Credit Card",desc:"Terms & Conditions",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"},
+  {id:35,bank:"CDB",cat:"Instalment",title:"Enjoy 20% OFF on CDB Credit Cards & 10% OFF on CDB Debit Cards at Cool Planet",desc:"Terms & Conditions",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"},
+  {id:36,bank:"CDB",cat:"Instalment",title:"Top Up your Playdium Card with CDB Credit Cards and Enjoy 20% Savings.",desc:"",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"},
+  {id:37,bank:"CDB",cat:"Supermarket",title:"Enjoy 10% OFF at Keells with CDB Credit/Debit Cards",desc:"Terms and Conditions",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"},
+  {id:38,bank:"CDB",cat:"Instalment",title:"Enjoy 30% off with CDB Credit Cards at Cinnamon Lakeside",desc:"Terms & Conditions",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"},
+  {id:39,bank:"CDB",cat:"Travel",title:"Enjoy Up to 50% OFF on Luxury Stays at Anantaya Resorts & Spa – Chilaw & Pasikudah",desc:"Discount Structure - Anantaya Resorts & Spa - Chilaw",disc:"Special offer",expiry:"2026-07-31",url:"https://www.cbsl.gov.lk/en/sri-lanka-deposit-insurance-scheme"}
 ];
 
-let myCards=[],offers=[],nextId=200;
+let myCards=[],offers=[],nextId=3000;
 let selBanks=new Set(),fCat='all',fTime='all',sortBy='expiry';
 let selColor=0,editId=null,curCardTab='my';
 
@@ -500,7 +464,7 @@ function render(){
     else if(isU)eH=`<span class="exp-tag urgent"><i class="ti ti-clock"></i>${d}d left</span>`;
     else if(isW)eH=`<span class="exp-tag warn"><i class="ti ti-clock"></i>${d}d left</span>`;
     else eH=`<span class="exp-tag"><i class="ti ti-calendar"></i>Until ${fmtDate(o.expiry)}</span>`;
-    const isDeep=o.url&&!o.url.match(/\/(card-offers|rewards-promotions|promotions|card-promotion|special-offers|cdb-offers)\/?(\?.*)?$/);
+    const isDeep=o.url&&(o.url.includes('/offer-details/')||o.url.includes('/promotions/dining')||o.url.includes('/promotions/hotels')||o.url.includes('/promotions/online')||o.url.includes('/promotions/other')||o.url.includes('360-rewards')||o.url.includes('the-good-life')||o.url.includes('installment-plan')||o.url.includes('maxrewards')||o.url.includes('/card-offers/supermarkets/')||o.url.includes('/card-offers/zero-plans/')||o.url.includes('/card-offers/travel-and-leisure/')||o.url.includes('/card-offers/dining/')||o.url.includes('/promotions/cards/supermarket/')||o.url.includes('/promotions/cards/dining/')||o.url.includes('/promotions/cards/style/')||o.url.includes('/promotions/cards/auto')||o.url.includes('/promotions/cards/travel/'));
     const srcLbl=isDeep?'View offer':'View all offers';
     const src=o.url?`<a href="${o.url}" class="src-link" target="_blank" rel="noopener"><i class="ti ti-external-link"></i>${srcLbl}</a>`:'';
     const col=colorFor(o.bank);
