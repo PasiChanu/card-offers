@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -45,7 +47,6 @@ jobs:
           node - << 'JS'
           const fs = require('fs');
 
-          // All paths are relative to the repo root (process.cwd())
           const offersFile   = 'scraper/offers.json';
           const templateFile = 'index.template.html';
           const outputFile   = 'index.html';
@@ -99,14 +100,16 @@ jobs:
           console.log('index.html built with', offers.length, 'offers. Date:', now);
           JS
 
-      - name: Commit changes
+      - name: Commit and push
         run: |
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name  "github-actions[bot]"
           git add index.html
           [ -f scraper/offers.json ] && git add scraper/offers.json || true
-          git diff --staged --quiet || git commit -m "bot: daily update $(date +'%Y-%m-%d')"
-          git push
+          git diff --staged --quiet && echo "Nothing to commit" && exit 0
+          git commit -m "bot: daily update $(date +'%Y-%m-%d')"
+          git pull --rebase origin main
+          git push origin main
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
