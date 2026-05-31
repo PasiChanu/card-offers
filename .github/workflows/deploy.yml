@@ -2,7 +2,7 @@ name: Daily Scrape & Deploy
 
 on:
   schedule:
-    - cron: '30 0 * * *'   # 00:30 UTC = 06:00 AM Sri Lanka time
+    - cron: '30 0 * * *'
   workflow_dispatch:
 
 permissions:
@@ -22,58 +22,90 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Show repo structure (debug)
-        run: |
-          echo "=== Repo root files ==="
-          ls -la
-          echo ""
-          echo "=== scraper/ files ==="
-          ls -la scraper/
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: scraper/package.json
 
-      - name: Install scraper dependencies
-        run: cd scraper && npm install
+      - name: Install Puppeteer
+        run: |
+          npm install puppeteer
+          npx puppeteer browsers install chrome
 
-      - name: Install Puppeteer browser
-        run: cd scraper && npx puppeteer browsers install chrome
-
-      - name: Run scraper
-        run: cd scraper && node scrape.js
-        timeout-minutes: 20
+      - name: Scrape all banks
+        run: node scraper/scrape.js
+        timeout-minutes: 25
         continue-on-error: true
 
-      - name: Check scraper output
-        id: check
-        run: |
-          if [ -f scraper/offers.json ]; then
-            COUNT=$(node -e "console.log(JSON.parse(require('fs').readFileSync('scraper/offers.json','utf8')).length)")
-            echo "count=$COUNT" >> $GITHUB_OUTPUT
-            echo "Scraped $COUNT offers"
-          else
-            echo "count=0" >> $GITHUB_OUTPUT
-            echo "No offers.json found — will skip build and use existing index.html"
-          fi
-
       - name: Build index.html
-        if: steps.check.outputs.count > 0
-        run: cd scraper && node build.js
+        run: |
+          node - << 'JS'
+          const fs = require('fs');
 
-      - name: Commit updated files
-        if: steps.check.outputs.count > 0
+          // All paths are relative to the repo root (process.cwd())
+          const offersFile   = 'scraper/offers.json';
+          const templateFile = 'index.template.html';
+          const outputFile   = 'index.html';
+
+          if (!fs.existsSync(offersFile)) {
+            console.log('No offers.json — keeping existing index.html');
+            process.exit(0);
+          }
+          if (!fs.existsSync(templateFile)) {
+            console.error('index.template.html missing from repo root!');
+            process.exit(1);
+          }
+
+          let offers = JSON.parse(fs.readFileSync(offersFile, 'utf8'));
+          console.log('Offers loaded:', offers.length);
+
+          function clean(s) {
+            return String(s||'').replace(/\\/g,'\\\\').replace(/`/g,"'").replace(/\${/g,'\\${').slice(0,500);
+          }
+
+          offers = offers.map((o,i) => ({
+            id: i+1,
+            bank:   clean(o.bank   || 'Unknown'),
+            cat:    clean(o.cat    || 'Other'),
+            title:  clean(o.title  || 'Offer'),
+            desc:   clean(o.desc   || ''),
+            disc:   clean(o.disc   || 'Special offer'),
+            expiry: o.expiry || '2026-12-31',
+            url:    clean(o.url    || '')
+          }));
+
+          const seedJS = 'const SEED=[\n' +
+            offers.map(o =>
+              '  {id:'+o.id+
+              ',bank:'+JSON.stringify(o.bank)+
+              ',cat:'+JSON.stringify(o.cat)+
+              ',title:'+JSON.stringify(o.title)+
+              ',desc:'+JSON.stringify(o.desc)+
+              ',disc:'+JSON.stringify(o.disc)+
+              ',expiry:'+JSON.stringify(o.expiry)+
+              ',url:'+JSON.stringify(o.url)+'}'
+            ).join(',\n') + '\n];';
+
+          let html = fs.readFileSync(templateFile, 'utf8');
+          html = html.replace(/const SEED=\[[\s\S]*?\];/, seedJS);
+
+          const now = new Date().toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'});
+          html = html.replace(/\{\{LAST_UPDATED\}\}/g, now);
+
+          fs.writeFileSync(outputFile, html);
+          console.log('index.html built with', offers.length, 'offers. Date:', now);
+          JS
+
+      - name: Commit changes
         run: |
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name  "github-actions[bot]"
-          git add index.html scraper/offers.json
-          git diff --staged --quiet || git commit -m "bot: daily update $(date +'%Y-%m-%d') — ${{ steps.check.outputs.count }} offers"
+          git add index.html
+          [ -f scraper/offers.json ] && git add scraper/offers.json || true
+          git diff --staged --quiet || git commit -m "bot: daily update $(date +'%Y-%m-%d')"
           git push
 
       - name: Setup Pages
